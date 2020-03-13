@@ -15,7 +15,7 @@ router.post(`/addTopping`, async (req, res, next) => {
 
 router.get(`/getToppings`, async (req, res, next) => {
     try {
-        const result = await ToppingModel.find().exec();
+        const result = await ToppingModel.find().sort({ name: 'asc' }).exec();
         res.json(result);
     } catch (e) {
         next(e);

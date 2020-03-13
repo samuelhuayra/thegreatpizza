@@ -16,7 +16,7 @@ router.post(`/addPizza`, async (req, res, next) => {
 
 router.get(`/getPizzas`, async (req, res, next) => {
     try {
-        const result = await PizzaModel.find().exec();
+        const result = await PizzaModel.find().sort({ name: 'asc' }).exec();
         res.json(result);
     } catch (e) {
         next(e);

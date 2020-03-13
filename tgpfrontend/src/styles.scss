@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$tgpfrontend-primary: mat-palette($mat-indigo);
-$tgpfrontend-accent: mat-palette($mat-pink, A200, A100, A400);
+$tgpfrontend-primary: mat-palette($mat-teal);
+$tgpfrontend-accent: mat-palette($mat-amber);
 
 // The warn palette is optional (defaults to red).
 $tgpfrontend-warn: mat-palette($mat-red);
@@ -30,3 +30,14 @@ $tgpfrontend-theme: mat-light-theme($tgpfrontend-primary, $tgpfrontend-accent, $
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pz-field{
+    padding: 0px 10px 0px 10px;
+    width: calc(100% - 20px);
+    .mat-form-field-infix{
+        width:  auto !important;
+    }
+    .pz-text-area{
+        resize: none;
+    }
+}

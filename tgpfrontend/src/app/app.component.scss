@@ -1,0 +1,50 @@
+.background{
+    background-image: url("../assets/img/background.jpg");
+    background-color: hsla(0, 0%, 100%, 0.48);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.pzCard{
+    background-color: hsla(0, 0%, 100%, 0.48);
+    &-det{
+        margin: 2px;
+    }
+}
+/* 
+##Screen = xs
+*/
+@media (max-width: 599px){
+    //CSS
+    .static-size{
+        max-height: 600px !important;
+        height: 600px !important;
+    }
+}
+/* 
+##Screen = sm
+*/
+@media (max-width: 600px) and (max-width: 959px) {
+    
+}
+
+/* 
+##Screen = md
+*/
+@media (max-width: 960px) and (max-width: 1279px) {
+
+}
+
+/* 
+##Screen = lg
+*/
+@media (max-width: 1280px) and (max-width: 1919px) {
+
+}
+
+/* 
+##Screen = xl
+*/
+@media (max-width: 1920px) and (max-width: 5000px) {
+
+}
