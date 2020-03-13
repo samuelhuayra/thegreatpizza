@@ -65,9 +65,10 @@
           <mat-card class="pzCard pzCard-det" *ngFor="let pizza of pizzas">
             <mat-card-header>
               <mat-card-title>{{pizza.name}}</mat-card-title>
+              <mat-card-subtitle>{{pizza.description}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              {{getToppingsDesc(pizza.toppings)}}
+              <p>{{getToppingsDesc(pizza.toppings)}}</p>
             </mat-card-content>
             <mat-card-actions align="end">
               <button mat-icon-button color="warn" type="button" (click)="deletePizza(pizza)"
