@@ -29,7 +29,7 @@ export class ToppingComponent implements OnInit {
   }
 
   async onSubmit() {
-    let resp:any;
+    let resp: any;
     if (this.data && this.data._id) {
       resp = await this.toppingService.editTopping(this.data._id, this.toppingForm);
     } else {

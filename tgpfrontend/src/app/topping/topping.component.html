@@ -9,12 +9,13 @@
         <div fxLayout="row" fxLayout.xs="column">
             <mat-form-field class="pz-field" color="accent" appearance="outline">
                 <mat-label>Description</mat-label>
-                <textarea class="pz-text-area" matInput type="text" [(ngModel)]="toppingForm.description" name="description" autocomplete="off" rows="3"></textarea>
+                <textarea class="pz-text-area" matInput type="text" [(ngModel)]="toppingForm.description"
+                    name="description" autocomplete="off" rows="3"></textarea>
             </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions fxLayoutAlign="end center">
         <button mat-button color="warn" type="button" (click)="cancel()">Cancel</button>
-        <button mat-button color="primary" type="submit"  [disabled]="!toppForm.form.valid">Save</button>
+        <button mat-button color="primary" type="submit" [disabled]="!toppForm.form.valid">Save</button>
     </div>
 </form>

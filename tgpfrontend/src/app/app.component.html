@@ -2,7 +2,7 @@
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <h1 style="font-size: 30px;color: #e4e4e4;margin: 20px 0px;">{{title}}</h1>
   </div>
-  <div fxLayout="row" fxLayout.xs="column" fxFlex  style="overflow-y: auto;">
+  <div fxLayout="row" fxLayout.xs="column" fxFlex style="overflow-y: auto;">
     <div class="static-size" fxFlex="50" fxFlexFill>
       <div fxLayout="column" fxFlexFill style="padding: 16px;">
         <mat-card class="pzCard" fxLayout="column" fxFlexFill>
@@ -61,7 +61,7 @@
     </div>
     <div class="static-size" fxFlex="50" fxFlexFill>
       <div fxLayout="column" fxFlexFill style="padding: 16px;">
-        <div fxLayout="row wrap" fxFlex fxLayoutAlign="start" style="overflow-y: auto;">
+        <div fxLayout="row wrap" fxFlex fxLayoutAlign="center start" style="overflow-y: auto;">
           <mat-card class="pzCard pzCard-det" *ngFor="let pizza of pizzas">
             <mat-card-header>
               <mat-card-title>{{pizza.name}}</mat-card-title>
@@ -70,10 +70,12 @@
               {{getToppingsDesc(pizza.toppings)}}
             </mat-card-content>
             <mat-card-actions align="end">
-              <button mat-icon-button color="warn" type="button" (click)="deletePizza(pizza)">
+              <button mat-icon-button color="warn" type="button" (click)="deletePizza(pizza)"
+                [disabled]="validEdit(pizza._id)">
                 <mat-icon>delete</mat-icon>
               </button>
-              <button mat-icon-button color="accent" type="button" (click)="editPizza(pizza)">
+              <button mat-icon-button color="accent" type="button" (click)="editPizza(pizza)"
+                [disabled]="validEdit(pizza._id)">
                 <mat-icon>edit</mat-icon>
               </button>
             </mat-card-actions>

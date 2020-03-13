@@ -35,36 +35,49 @@ export class AppComponent {
     this.toppings = await this.toppingService.getToppings();
   }
 
-  async onSubmit(){
+  async onSubmit() {
+
     let data = _.pick(this.pizzaForm, ['name', 'description']);
     data.toppings = _.filter(this.toppings, ['check', true]);
-    if(this.pizzaForm._id){
-      let resp = await this.pizzaService.editPizza(this.pizzaForm._id,data);
+    if (!data.toppings || data.toppings.length < 1) {
+      this.snackBar.open('Please, select at least one topping', null, {
+        duration: 2000,
+        panelClass: ['snack-success'],
+        verticalPosition: 'top'
+      });
+      return;
+    }
+
+    if (this.pizzaForm._id) {
+      let resp = await this.pizzaService.editPizza(this.pizzaForm._id, data);
       this.pizzas[_.findIndex(this.pizzas, ['_id', this.pizzaForm._id])] = resp;
-      this.pizzas = _.orderBy(this.pizzas, 'name','asc');
-      this.pizForm.resetForm();
-    }else{
+      this.pizzas = _.orderBy(this.pizzas, 'name', 'asc');
+      this.resetForm();
+    } else {
       let resp = await this.pizzaService.addPizza(data);
       this.pizzas.push(resp);
-      this.pizzas = _.orderBy(this.pizzas, 'name','asc');
-      this.pizForm.resetForm();
+      this.pizzas = _.orderBy(this.pizzas, 'name', 'asc');
+      this.resetForm();
     }
   }
 
-  cancel(){
-    this.pizForm.resetForm();
+  cancel() {
+    this.resetForm();
   }
 
-  async editPizza(pizza: any) {
-    let data = _.pick(pizza, ['_id','name', 'description']);
+  resetForm(data?: any) {
+    this.pizzaForm = {};
     this.pizForm.resetForm(data);
-    this.pizzaForm._id  = data._id;
-    pizza.toppings.map((t:any)=>{  
-      console.log('_.find(this.toppings,)>>>',_.findIndex(this.toppings, ['_id', t._id]));
-      if(_.find(this.toppings, ['_id', t._id])){
+  }
+  async editPizza(pizza: any) {
+    let data = _.pick(pizza, ['_id', 'name', 'description']);
+    this.pizForm.resetForm(data);
+    this.pizzaForm._id = data._id;
+    pizza.toppings.map((t: any) => {
+      if (_.find(this.toppings, ['_id', t._id])) {
         this.toppings[_.findIndex(this.toppings, ['_id', t._id])].check = true;
       }
-    });    
+    });
   }
 
   async deletePizza(pizza: any) {
@@ -76,21 +89,21 @@ export class AppComponent {
 
   addTopping() {
     const sub = this.dialog.open(ToppingComponent, {}).afterClosed().subscribe(async (resp: any) => {
-      if(resp && resp.topping){
+      if (resp && resp.topping) {
         this.toppings.push(resp.topping);
-        this.toppings = _.orderBy(this.toppings, 'name','asc');
+        this.toppings = _.orderBy(this.toppings, 'name', 'asc');
       }
-        sub.unsubscribe();
+      sub.unsubscribe();
     });
   }
 
   editTopping(topping: any) {
     const sub = this.dialog.open(ToppingComponent, { data: topping }).afterClosed().subscribe((resp: any) => {
-      if(resp && resp.topping){
+      if (resp && resp.topping) {
         this.toppings[_.findIndex(this.toppings, ['_id', resp.topping._id])] = resp.topping;
-        this.toppings = _.orderBy(this.toppings, 'name','asc');
+        this.toppings = _.orderBy(this.toppings, 'name', 'asc');
       }
-        sub.unsubscribe();
+      sub.unsubscribe();
     });
   }
 
@@ -105,4 +118,7 @@ export class AppComponent {
     return _.join(topping.map((t: any) => { return t.name }), ', ');
   }
 
+  validEdit(_id: String) {
+    if (this.pizzaForm._id && this.pizzaForm._id == _id) return true;
+  }
 }

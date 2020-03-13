@@ -12,10 +12,10 @@ export class PizzaService {
 
   constructor(private http: HttpClient) { }
 
-  
-  getPizza(_id:String): Promise<any> {
+
+  getPizza(_id: String): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.get(`${this.endPoint}${this.pizzasPath}/getPizza/${_id}`).subscribe((res:any) => {
+      this.http.get(`${this.endPoint}${this.pizzasPath}/getPizza/${_id}`).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -25,7 +25,7 @@ export class PizzaService {
 
   getPizzas(): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.get(`${this.endPoint}${this.pizzasPath}/getPizzas`).subscribe((res:any) => {
+      this.http.get(`${this.endPoint}${this.pizzasPath}/getPizzas`).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -33,9 +33,9 @@ export class PizzaService {
     });
   }
 
-  addPizza(pizza:any): Promise<any> {
+  addPizza(pizza: any): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.post(`${this.endPoint}${this.pizzasPath}/addPizza`,pizza).subscribe((res:any) => {
+      this.http.post(`${this.endPoint}${this.pizzasPath}/addPizza`, pizza).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -43,9 +43,9 @@ export class PizzaService {
     });
   }
 
-  editPizza(_id:String,pizza:any): Promise<any> {
+  editPizza(_id: String, pizza: any): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.put(`${this.endPoint}${this.pizzasPath}/editPizza/${_id}`,pizza).subscribe((res:any) => {
+      this.http.put(`${this.endPoint}${this.pizzasPath}/editPizza/${_id}`, pizza).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -53,9 +53,9 @@ export class PizzaService {
     });
   }
 
-  deletePizza(_id:String): Promise<any> {
+  deletePizza(_id: String): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.delete(`${this.endPoint}${this.pizzasPath}/deletePizza/${_id}`).subscribe((res:any) => {
+      this.http.delete(`${this.endPoint}${this.pizzasPath}/deletePizza/${_id}`).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);

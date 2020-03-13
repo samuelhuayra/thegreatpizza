@@ -11,20 +11,20 @@ export class ToppingService {
 
   constructor(private http: HttpClient) { }
 
-  
-  getTopping(_id:String): Promise<any> {
+
+  getTopping(_id: String): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.get(`${this.endPoint}${this.toppingsPath}/getTopping/${_id}`).subscribe((res:any) => {
+      this.http.get(`${this.endPoint}${this.toppingsPath}/getTopping/${_id}`).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
       });
     });
   }
-  
+
   getToppings(): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.get(`${this.endPoint}${this.toppingsPath}/getToppings`).subscribe((res:any) => {
+      this.http.get(`${this.endPoint}${this.toppingsPath}/getToppings`).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -32,9 +32,9 @@ export class ToppingService {
     });
   }
 
-  addTopping(topping:any): Promise<any> {
+  addTopping(topping: any): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.post(`${this.endPoint}${this.toppingsPath}/addTopping`,topping).subscribe((res:any) => {
+      this.http.post(`${this.endPoint}${this.toppingsPath}/addTopping`, topping).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -42,9 +42,9 @@ export class ToppingService {
     });
   }
 
-  editTopping(_id:String,topping:any): Promise<any> {
+  editTopping(_id: String, topping: any): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.put(`${this.endPoint}${this.toppingsPath}/editTopping/${_id}`,topping).subscribe((res:any) => {
+      this.http.put(`${this.endPoint}${this.toppingsPath}/editTopping/${_id}`, topping).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
@@ -52,9 +52,9 @@ export class ToppingService {
     });
   }
 
-  deleteTopping(_id:String): Promise<any> {
+  deleteTopping(_id: String): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      this.http.delete(`${this.endPoint}${this.toppingsPath}/deleteTopping/${_id}`).subscribe((res:any) => {
+      this.http.delete(`${this.endPoint}${this.toppingsPath}/deleteTopping/${_id}`).subscribe((res: any) => {
         resolve(res);
       }, (err) => {
         reject(err);
