@@ -1,4 +1,4 @@
-# thegreatpizza
+# The Great Pizza
 
 The great pizza is little proyect manage a catalogue of pizzas and toppings.
 The preject is made up of MEAN stack:
