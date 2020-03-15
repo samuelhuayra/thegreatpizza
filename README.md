@@ -1,7 +1,7 @@
 # The Great Pizza
 
-The great pizza is little proyect manage a catalogue of pizzas and toppings.
-The preject is made up of MEAN stack:
+The great pizza is little project to manage a catalogue of pizzas and toppings.
+The project is made up of MEAN stack:
 - [MoongoDB.Atlas](https://www.mongodb.com/)
 - [Express](https://expressjs.com/)
 - [Angular9](https://angular.io/)
